@@ -7,8 +7,8 @@ var button_text = null;
 var operator_text = null;
 var dot_text = null;
 var output = "";
-var check_for_number = true;
-var oper_array = ["-", "+", "/", "*"];
+// var check_for_number = true;
+// var oper_array = ["-", "+", "/", "*"];
 var current_string = null;
 var equal_press_count = 0;
 var first_operator = null;
@@ -44,8 +44,8 @@ function show_display() {
 
 function check_operator_input_array() {
     console.log("check operator function is running");
-    if (!isNaN(parseInt(input_array[0])) && ((input_array[1] == "+") || (input_array[1] == "-") || (input_array[1] == "/") || (input_array[1] == "*")) && !isNaN(parseInt(input_array[2]))) {
-        console.log("", input_array[2]);
+    if (!isNaN(parseInt(input_array[0])) && ((input_array[1] == "+") || (input_array[1] == "-") || (input_array[1] == "/") || (input_array[1] == "*")) && !isNaN(parseFloat(input_array[2]))) {
+        console.log("IT IS TRUE check operator running", input_array);
         show_display();
         do_math();
     } else {
@@ -65,6 +65,7 @@ function check_dot_input_array() {
             console.log("you don't have any dots");
         }
     }
+    show_display()
     return false
 }
 
@@ -87,6 +88,10 @@ function press_dot(dot) {
 function press_number(num) {
     button_text = $(num).text();                        //assign the button to the right number
     console.log("you clicked number: ", button_text);
+    if (parseInt(input_array[input_position]) === 0 || input_array[input_position] == "ERROR") {
+        input_array[input_position] = 0;
+        input_array = [""];
+    }
     input_array[input_position] += button_text;           //store the value to the string
     console.log(input_array);
     console.log(input_array[input_position]);
@@ -97,7 +102,6 @@ function press_number(num) {
 function press_operator(oper) {                                        //when you pres -,=,*,/
     operator_text = $(oper).text();                           //assign the button to the right number
     console.log("you clicked operator ", operator_text);
-
     check_operator_input_array();
     if (!isNaN(parseInt(input_array[input_position]))) {
         console.log("the one before is a number");
@@ -108,6 +112,7 @@ function press_operator(oper) {                                        //when yo
         input_position++;
         input_array[input_position] = "";            //assign the next string to be empty
         console.log(input_array);
+
     } else {
         console.log("the one before is an operator");
         console.log("Array ", input_array);
@@ -116,9 +121,11 @@ function press_operator(oper) {                                        //when yo
         input_array[input_position] = [""];
         input_array[input_position] += operator_text;
         input_position++;
-        console.log("value at index  : ", input_array);
+        console.log("value at index  : ", input_array[input_position]);
+        console.log("array  : ", input_array);
     }
-    show_display();
+    $("#dispaly").text(input_array);
+
 }
 
 function do_math(num1, num2, oper) {
@@ -147,6 +154,9 @@ function do_math(num1, num2, oper) {
             } else {
                 output = num1 / num2;
             }
+        default:
+            output = num1;
+
     }
     input_array = [""];
     input_position = 0;
@@ -232,10 +242,10 @@ function press_equal(equal) {
         equal_press_count++;
         if (equal_press_count == 4) {
             console.log("you pressed = 4 times");
-            $("#display").text("Ready");
+            $("#display").html("Ready");
         }
     }
-    else if (input_array[1] == undefined) {
+    else if (input_array[1] == undefined && first_second_number != null) {
         console.log("DO_MATH3 started: ");
         do_math3();
     }
@@ -246,6 +256,7 @@ function press_equal(equal) {
         console.log("DO_MATH started: ");
         do_math();
     }
+
 }
 
 
