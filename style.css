@@ -1,0 +1,55 @@
+body{
+    margin:0;
+}
+.wrapper {
+    background-image: url(assets/712-11.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:100vh;
+}
+
+header {
+    height: 15%;
+    text-align: center;
+    font-size: 300%
+}
+
+footer {
+    height: 3vh;
+    text-align: center;
+    font-size: 80%;
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    color: black;
+}
+
+#main {
+    width: 50%;
+    opacity: 0.4;
+}
+
+#display {
+    height: 13vh;
+    border: 1px solid black;
+    font-size: 200%;
+    padding: 5%;
+    background-color: white;
+
+}
+
+.calculator_reset, .calculator_back, .calculator_operator, .calculator_equal, .calculator_dot, .calculator_numbers {
+    border: 1px solid black;
+    height: 10vh;
+    text-align: center;
+    font-size: 150%;
+    color: black;
+    background-color: white;
+}
+
+.calculator_reset:hover, .calculator_back:hover, .calculator_operator:hover, .calculator_equal:hover, .calculator_dot:hover, .calculator_numbers:hover {
+    color: red;
+    background-color: lavender;
+}
+
+
