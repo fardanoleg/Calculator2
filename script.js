@@ -40,6 +40,9 @@ function show_display() {
     $("#display").text(input_array[input_position]);
 }
 function sound_oper(clicked) {
+    var bleep = new Audio();
+    bleep.src = baseUrl + audio[i - 1];
+    bleep.play();
     console.log("SUCCESS");
     var i = $(clicked).attr('id').substring(1);   //
     console.log(i);
