@@ -8,7 +8,7 @@ var operator_text = null;
 var dot_text = null;
 var current_string = null;
 var baseUrl = "http://www.soundjay.com/button/";
-var audio = ["beep-01a.mp3", "beep-02.mp3", "beep-03.mp3", "beep-04.mp3", "beep-05.mp3", "beep-06.mp3", "beep-07.mp3", "beep-08b.mp3", "beep-09.mp3", "beep-10.mp3", "beep-11.mp3", "beep-12.mp3", "beep-13.mp3", "beep-14.mp3", "beep-15.mp3", "beep-16.mp3" ];
+var audio = ["beep-01a.mp3", "beep-02.mp3", "beep-03.mp3", "beep-04.mp3", "beep-05.mp3", "beep-06.mp3", "beep-07.mp3" ];
 
 
 $(document).ready(function () {
@@ -39,103 +39,22 @@ $(document).ready(function () {
 function show_display() {
     $("#display").text(input_array[input_position]);
 }
-function sound_dot(click){
+function sound_oper(clicked) {
     console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
+    var i = $(clicked).attr('id').substring(1);   //
     console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
+    new Audio(baseUrl + audio[i - 1]).play();
 }
-function sound_equal(click){
+function sound(clicked) {
     console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
+    var bleep = new Audio();                 // create element audio
+    bleep.src = "sound/" + clicked;            //set attribute source
+    bleep.play();                                //play
 }
-function sound_mult(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}
-function sound_del(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}
-function sound_plus(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}
-function sound_min(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}
-function sound_one(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}
-function sound_two(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}
-function sound_three(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}function sound_four(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}function sound_five(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}function sound_six(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}function sound_seven(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}function sound_eight(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}
-function sound_nine(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}function sound_zero(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}function sound_reset(click){
-    console.log("SUCCESS");
-    var i = $(click).attr('id').substring(1);
-    console.log(i);
-    new Audio(baseUrl + audio[i-1]).play();
-}
-// function sound_dot() {
-//     console.log("you clicked '.' now it will sound);
+
+// ADD music using Ajax
+// function Listen () {
+//     console.log("now it will paly the music);
 //     $.ajax({
 //         url: 'https://api.spotify.com/v1/search',
 //         data: {
@@ -163,8 +82,6 @@ function sound_nine(click){
 //
 //     });
 // }
-
-
 
 
 function check_array() {
