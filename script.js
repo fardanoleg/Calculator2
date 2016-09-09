@@ -7,14 +7,19 @@ var button_text = null;
 var operator_text = null;
 var dot_text = null;
 var current_string = null;
+var baseUrl = "http://www.soundjay.com/button/";
+var audio = ["beep-01a.mp3", "beep-02.mp3", "beep-03.mp3", "beep-04.mp3", "beep-05.mp3", "beep-06.mp3", "beep-07.mp3", "beep-08b.mp3", "beep-09.mp3", "beep-10.mp3", "beep-11.mp3", "beep-12.mp3", "beep-13.mp3", "beep-14.mp3", "beep-15.mp3", "beep-16.mp3" ];
+
 
 $(document).ready(function () {
 
     $(".calculator_dot").click(function () {
-        press_dot(this)
+        press_dot(this);
+        // sound_dot();
     });
     $(".calculator_numbers").click(function () {
         press_number(this);
+
     });
 
     $(".calculator_operator").click(function () {
@@ -30,11 +35,135 @@ $(document).ready(function () {
         press_back();
     })
 
-
 });
 function show_display() {
     $("#display").text(input_array[input_position]);
 }
+function sound_dot(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}
+function sound_equal(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}
+function sound_mult(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}
+function sound_del(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}
+function sound_plus(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}
+function sound_min(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}
+function sound_one(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}
+function sound_two(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}
+function sound_three(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}function sound_four(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}function sound_five(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}function sound_six(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}function sound_seven(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}function sound_eight(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}
+function sound_nine(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}function sound_zero(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}function sound_reset(click){
+    console.log("SUCCESS");
+    var i = $(click).attr('id').substring(1);
+    console.log(i);
+    new Audio(baseUrl + audio[i-1]).play();
+}
+// function sound_dot() {
+//     console.log("you clicked '.' now it will sound);
+//     $.ajax({
+//         url: 'https://api.spotify.com/v1/search',
+//         data: {
+//             q: typeOfSong,
+//             type: 'track'
+//         },
+//
+//         success: function (response) {
+//             console.log('spotify', response);
+//
+//             for (i = 0; i < response.tracks.items.length; i++) {
+//
+//                 var tracks = response.tracks.items[i];
+//
+//                 var song = {
+//                     audio: tracks.preview_url
+//                 };
+//                 songArray.push(song);
+//                 console.log(songArray[0]);
+//             }
+//             $('#audio').attr('src, ""');
+//             $('#audio').attr('src', songArray[0].audio);
+//             playPause();
+//         }
+//
+//     });
+// }
+
 
 
 
@@ -45,18 +174,20 @@ function check_array() {
         if (input_array[i] == "*") {
             console.log("Found *,/ will run it");
             do_math();
-        } else if(input_array[i] == "/"){
+        } else if (input_array[i] == "/") {
             do_math2();
-        }console.log(input_array);
+        }
+        console.log(input_array);
     }
     for (var i = 0; i < input_array.length; i++) {
         console.log(" The length for +,-  is:", input_array.length);
         if (input_array[i] == "-") {
             console.log("Found -,+ will run it");
             do_math3();
-        } else if (input_array[i] == "+"){
+        } else if (input_array[i] == "+") {
             do_math4();
-        } console.log(input_array);
+        }
+        console.log(input_array);
     }
     input_position = 0;
     show_display();
@@ -80,7 +211,8 @@ function do_math() {
     switch (oper) {
         case "*":
             output = num1 * num2;
-            break;}
+            break;
+    }
     console.log(output);
     num1 = output;
     console.log(num1_index);
@@ -107,7 +239,8 @@ function do_math2() {
     switch (oper) {
         case "/":
             output = num1 / num2;
-            break;}
+            break;
+    }
     console.log(output);
     num1 = output;
     console.log(num1_index);
@@ -162,8 +295,7 @@ function do_math4() {
     console.log("new_array: ", input_array);
 }
 
-
-function check_dot_input_array() {         //checks if the string has decimal already if true return true
+function check_dot_input_array() {                                //checks if the string has decimal already if true return true
     current_string = input_array[input_position];
     console.log("check for current string: ", current_string);
     for (var i = 0; i < current_string.length; i++) {
@@ -179,7 +311,7 @@ function check_dot_input_array() {         //checks if the string has decimal al
     return false
 }
 
-function press_dot(dot) {                         // checks if the string has decimal already using flag true, if it doesnt has decimal add one
+function press_dot(dot) {                                         // checks if the string has decimal already using flag true, if it doesnt has decimal add one
     dot_text = $(dot).text();
     console.log("you clicked DOT: ", dot_text);
     check_dot_input_array();
@@ -196,24 +328,23 @@ function press_dot(dot) {                         // checks if the string has de
     show_display();
 }
 
-function press_number(num) {                   //  function when u press any number
-    button_text = $(num).text();                        //assign the button to the right number
+function press_number(num) {                                     //  function when u press any number
+    button_text = $(num).text();                                  //assign the button to the right number
     console.log("you clicked number: ", button_text);
     if (parseInt(input_array[input_position]) === 0 || input_array[input_position] == "ERROR") {  //set everything to 0
         input_array[input_position] = 0;
         input_array = [""];
     }
-    input_array[input_position] += button_text;           //store the value to the string
+    input_array[input_position] += button_text;                  //store the value to the string
     console.log(input_array);
     console.log(input_array[input_position]);
     show_display()
 }
 
-
 function press_operator(oper) {                                        //when you pres -,=,*,/
-    operator_text = $(oper).text();                           //assign the button to the right number
+    operator_text = $(oper).text();                             //assign the button to the right number
     console.log("you clicked operator ", operator_text);
-    // check_operator_input_array();                           //function to check if num1, num2 and operator exist aLREADY
+
     if (!isNaN(parseFloat(input_array[input_position]))) {     // checks if the item before is a number
         console.log("the one before is a number");
         console.log(input_array[input_position]);
@@ -221,10 +352,10 @@ function press_operator(oper) {                                        //when yo
         input_array[input_position] = [""];
         input_array[input_position] += operator_text;
         input_position++;
-        input_array[input_position] = "";            //assign the next string to be empty
+        input_array[input_position] = "";                      //assign the next string to be empty
         console.log(input_array);
 
-    } else {                                           //the item before is not a number to prevent situation like this +++++---**** etc...
+    } else {                                                   //the item before is not a number to prevent situation like this +++++---**** etc...
         console.log("the one before is an operator");
         console.log("Array ", input_array);
         console.log("Position: ", input_position);
@@ -239,7 +370,6 @@ function press_operator(oper) {                                        //when yo
 
 }
 
-
 function press_clear() {                                     //reset everything
     console.log("you clicked reset");
     $("#display").text("");
@@ -249,13 +379,17 @@ function press_clear() {                                     //reset everything
 
 }
 
-
-
 function press_equal(equal) {                  // situation when u press equal
     console.log("you pressed equal");
     check_array();
 }
 
-
+function press_back() {
+    console.log("you clicked back button");
+    input_array.pop();
+    input_position--;
+    console.log(input_array);
+    show_display();
+}
 
 

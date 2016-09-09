@@ -21,35 +21,34 @@
             <div id="display"></div>   <!-- for display-->
         </div>
         <div class="row">                 <!-- for buttons clear-->
-            <div class="col-xs-6 calculator_reset">AC</div>
+            <div id ="b16" class="col-xs-6 calculator_reset" onclick="sound_reset(this)">AC</div>
             <div class="col-xs-6 calculator_back">CC</div>
         </div>
         <div class="row">                 <!-- for buttons 9,8,7,/ -->
-            <div class="col-xs-3 calculator_numbers">9</div>
-            <div class="col-xs-3 calculator_numbers">8</div>
-            <div class="col-xs-3 calculator_numbers">7</div>
-            <div class="col-xs-3 calculator_operator">*</div>
+            <div id="b9" class="col-xs-3 calculator_numbers" onclick="sound_nine(this)">9</div>
+            <div id="b8" class="col-xs-3 calculator_numbers" onclick="sound_eight(this)">8</div>
+            <div id="b7" class="col-xs-3 calculator_numbers" onclick="sound_seven(this)">7</div>
+            <div id="b14" class="col-xs-3 calculator_operator" onclick="sound_mult(this)">*</div>
         </div>
         <div class="row">                  <!-- for buttons 6,5,4,+ -->
-            <div class="col-xs-3 calculator_numbers">6</div>
-            <div class="col-xs-3 calculator_numbers">5</div>
-            <div class="col-xs-3 calculator_numbers">4</div>
-            <div class="col-xs-3 calculator_operator">/</div>
+            <div id="b6" class="col-xs-3 calculator_numbers" onclick="sound_six(this)">6</div>
+            <div id="b5" class="col-xs-3 calculator_numbers" onclick="sound_five(this)">5</div>
+            <div id="b4" class="col-xs-3 calculator_numbers" onclick="sound_four(this)">4</div>
+            <div id="b13" class="col-xs-3 calculator_operator" onclick="sound_del(this)">/</div>
         </div>
         <div class="row">                 <!-- for buttons 3,2,1,- -->
-            <div class="col-xs-3 calculator_numbers">3</div>
-            <div class="col-xs-3 calculator_numbers">2</div>
-            <div class="col-xs-3 calculator_numbers">1</div>
-            <div class="col-xs-3 calculator_operator">-</div>
+            <div id="b3" class="col-xs-3 calculator_numbers" onclick="sound_three(this)">3</div>
+            <div id="b2" class="col-xs-3 calculator_numbers" onclick="sound_two(this)">2</div>
+            <div id="b1" class="col-xs-3 calculator_numbers" onclick="sound_one(this)">1</div>
+            <div id="b12" class="col-xs-3 calculator_operator" onclick="sound_min(this)">-</div>
         </div>
         <div class="row">                 <!-- for buttons .,0,=,* -->
-            <div class="col-xs-3 calculator_dot">.</div>
-            <div class="col-xs-3 calculator_numbers">0</div>
-            <div class="col-xs-3 calculator_equal">=</div>
-            <div class="col-xs-3 calculator_operator">+</div>
+            <div id="b15" class="col-xs-3 calculator_dot" onclick="sound_dot(this)">.</div>
+            <div id="b0" class="col-xs-3 calculator_numbers" onclick="sound_zero(this)">0</div>
+            <div id="b10" class="col-xs-3 calculator_equal" onclick="sound_equal(this)">=</div>
+            <div id="b11" class="col-xs-3 calculator_operator" onclick="sound_plus(this)">+</div>
         </div>
     </div>
-
 
 <footer>Oleg Fardanov 2016</footer>
 </div><!--footer-->
