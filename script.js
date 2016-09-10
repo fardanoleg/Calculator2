@@ -8,8 +8,9 @@ var operator_text = null;
 var dot_text = null;
 var current_string = null;
 var baseUrl = "http://www.soundjay.com/button/";
-var audio = ["beep-01a.mp3", "beep-02.mp3", "beep-03.mp3", "beep-04.mp3", "beep-05.mp3", "beep-06.mp3", "beep-07.mp3" ];
-
+var audio = ["beep-01a.mp3", "beep-02.mp3", "beep-03.mp3", "beep-04.mp3", "beep-05.mp3", "beep-06.mp3", "beep-07.mp3"];
+var songArray = [];
+var typeOfSong = "michael"
 
 $(document).ready(function () {
 
@@ -56,35 +57,42 @@ function sound(clicked) {
 }
 
 // ADD music using Ajax
-// function Listen () {
-//     console.log("now it will paly the music);
-//     $.ajax({
-//         url: 'https://api.spotify.com/v1/search',
-//         data: {
-//             q: typeOfSong,
-//             type: 'track'
-//         },
-//
-//         success: function (response) {
-//             console.log('spotify', response);
-//
-//             for (i = 0; i < response.tracks.items.length; i++) {
-//
-//                 var tracks = response.tracks.items[i];
-//
-//                 var song = {
-//                     audio: tracks.preview_url
-//                 };
-//                 songArray.push(song);
-//                 console.log(songArray[0]);
-//             }
-//             $('#audio').attr('src, ""');
-//             $('#audio').attr('src', songArray[0].audio);
-//             playPause();
-//         }
-//
-//     });
-// }
+function listenAjax() {
+    console.log("now it will play the music");
+
+    $.ajax({
+        url: 'https://api.spotify.com/v1/search',
+        data: {
+            q: typeOfSong,
+            type: 'track'
+        },
+
+        success: function (response) {
+            console.log('spotify', response);
+
+            for (i = 0; i < response.tracks.items.length; i++) {
+
+                var tracks = response.tracks.items[i];
+
+                var song = {
+                    audio: tracks.preview_url
+                };
+                songArray.push(song);
+                console.log(songArray);
+            }
+
+            var song = new Audio();
+            song.src = songArray[0].audio;
+            song.play();
+
+            // $('#audio').attr('src, ""');
+            // $('#audio').attr('src', songArray[0].audio);
+            // $("#audio").play();
+        }
+
+    });
+}
+
 
 
 function check_array() {
@@ -93,9 +101,9 @@ function check_array() {
         console.log("THE length for *,/ is: ", input_array.length);
         if (input_array[i] == "*") {
             console.log("Found *,/ will run it");
-            do_math();
+            do_math(input_array[i]);
         } else if (input_array[i] == "/") {
-            do_math2();
+            do_math(input_array[i]);
         }
         console.log(input_array);
     }
@@ -103,116 +111,41 @@ function check_array() {
         console.log(" The length for +,-  is:", input_array.length);
         if (input_array[i] == "-") {
             console.log("Found -,+ will run it");
-            do_math3();
+            do_math(input_array[i]);
         } else if (input_array[i] == "+") {
-            do_math4();
+            do_math(input_array[i]);
         }
         console.log(input_array);
     }
     input_position = 0;
     show_display();
 }
-
-function do_math() {
-    console.log("do math is running");
-    var oper_index = input_array.indexOf("*");                     //index of the operator
+function do_math(a) {
+    var oper_index = input_array.indexOf(a);         //index of the operator
+    console.log(oper_index);
     var oper = input_array[oper_index];                               //the value on the oper
     var num1 = parseFloat(input_array[oper_index - 1]);                              //the value of num1
     var num2 = parseFloat(input_array[oper_index + 1]);                            //the value of num2
     var num1_index = oper_index - 1;                              //index of num1
     var num2_index = oper_index + 1;                              //index of num2
-    console.log("operator index: ", oper_index);
-    console.log("operator : ", oper);
-    console.log("the number before index: ", num1);
-    console.log("the number after index: ", num2);
-    console.log("the index of num1: ", num1_index);
-    console.log("the index of num2: ", num2_index);
-    var output = null;
-    switch (oper) {
+    switch (a) {
         case "*":
-            output = num1 * num2;
+            var output = num1 * num2;
             break;
-    }
-    console.log(output);
-    num1 = output;
-    console.log(num1_index);
-    input_array.splice(num1_index, 3, String(num1));
-    check_array();
-    console.log("new_array: ", input_array);
-}
-
-function do_math2() {
-    console.log("do math2 is running");
-    var oper_index = input_array.indexOf("/");                     //index of the operator
-    var oper = input_array[oper_index];                            //the value on the oper
-    var num1 = parseFloat(input_array[oper_index - 1]);                              //the value of num1
-    var num2 = parseFloat(input_array[oper_index + 1]);                    //the value of num2
-    var num1_index = oper_index - 1;                              //index of num1
-    var num2_index = oper_index + 1;                              //index of num2
-    console.log("operator index: ", oper_index);
-    console.log("operator : ", oper);
-    console.log("the number before index: ", num1);
-    console.log("the number after index: ", num2);
-    console.log("the index of num1: ", num1_index);
-    console.log("the index of num2: ", num2_index);
-    var output = null;
-    switch (oper) {
         case "/":
-            output = num1 / num2;
+            var output = num1 / num2;
+            break;
+        case "-":
+            var output = num1 - num2;
+            break;
+        case "+":
+            var output = num1 + num2;
             break;
     }
-    console.log(output);
     num1 = output;
-    console.log(num1_index);
     input_array.splice(num1_index, 3, String(num1));
     check_array();
-    console.log("new_array: ", input_array);
-}
-
-function do_math3() {
-    console.log("do math is running");
-    var oper_index = input_array.indexOf("-");                     //index of the operator
-    var oper = input_array[oper_index];                            //the value on the oper
-    var num1 = parseFloat(input_array[oper_index - 1]);                              //the value of num1
-    var num2 = parseFloat(input_array[oper_index + 1]);                     //the value of num2
-    var num1_index = oper_index - 1;                              //index of num1
-    var num2_index = oper_index + 1;                              //index of num2
-    console.log("operator index: ", oper_index);
-    console.log("operator : ", oper);
-    console.log("the number before index: ", num1);
-    console.log("the number after index: ", num2);
-    console.log("the index of num1: ", num1_index);
-    console.log("the index of num2: ", num2_index);
-    var output = num1 - num2;
-    console.log(output);
-    num1 = output;
-    console.log(num1_index);
-    input_array.splice(num1_index, 3, String(num1));
-    check_array();
-    console.log("new_array: ", input_array);
-}
-
-function do_math4() {
-    console.log("do math is running");
-    var oper_index = input_array.indexOf("+");                     //index of the operator
-    var oper = input_array[oper_index];                            //the value on the oper
-    var num1 = parseFloat(input_array[oper_index - 1]);                              //the value of num1
-    var num2 = parseFloat(input_array[oper_index + 1]);                      //the value of num2
-    var num1_index = oper_index - 1;                              //index of num1
-    var num2_index = oper_index + 1;                              //index of num2
-    console.log("operator index: ", oper_index);
-    console.log("operator : ", oper);
-    console.log("the number before index: ", num1);
-    console.log("the number after index: ", num2);
-    console.log("the index of num1: ", num1_index);
-    console.log("the index of num2: ", num2_index);
-    var output = num1 + num2;
-    console.log(output);
-    num1 = output;
-    console.log(num1_index);
-    input_array.splice(num1_index, 3, String(num1));
-    check_array();
-    console.log("new_array: ", input_array);
+    console.log(input_array);
 }
 
 function check_dot_input_array() {                                //checks if the string has decimal already if true return true
@@ -304,12 +237,14 @@ function press_equal(equal) {                  // situation when u press equal
     check_array();
 }
 
-function press_back() {
-    console.log("you clicked back button");
-    input_array.pop();
-    input_position--;
-    console.log(input_array);
-    show_display();
-}
+// function press_back() {
+//     console.log("you clicked back button");
+//     console.log(input_array);
+//     input_array.pop();
+//
+//     console.log(input_array);
+//     console.log(input_array);
+//     show_display();
+// }
 
 

@@ -7,9 +7,11 @@
     <meta name="author" content="Oleg Fardanov">
     <title>Monkulator</title>
 
-    <link rel="stylesheet" type="text/css" href="style.css">  <!--CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-2.2.4.js"></script> <!--Jquery-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
     <script src="script.js"></script> <!--JS-->
 </head>
 <body>
@@ -49,7 +51,7 @@
             <div id="b7" class="col-xs-3 calculator_operator" onclick="sound_oper(this)">+</div>
         </div>
     </div>
-
+<button id="audio" type="button" onclick="listenAjax()">play</button>
     <footer>Oleg Fardanov 2016</footer>
 </div><!--footer-->
 </body>
