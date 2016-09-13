@@ -69,18 +69,18 @@ function listenAjax() {
 
         success: function (response) {
             //LFZ START
-            console.log('spotify', response);  // to see if the success running and response
+              // to see if the success running and response
 
-            for (i = 0; i < response.tracks.items.length; i++) {    // (loop) will go through the object find the tracks inside item and will go through all the items
+               // (loop) will go through the object find the tracks inside item and will go through all the items
 
-                var tracks = response.tracks.items[i];  // declare and assign the track inside each items to a variable
+                  // declare and assign the track inside each items to a variable
 
-                var song = {                       // declare and assign the song object audio wit hthe path to the song
-                    audio: tracks.preview_url
-                };
-                songArray.push(song);     //will store the song to the array
-                console.log(songArray);   //to see the result the songArray
-            }
+                                    // declare and assign the song object audio wit hthe path to the song
+
+
+                  //will store the song to the array
+                   //to see the result the songArray
+
             //LFZ END
             var song = new Audio();
             song.src = songArray[0].audio;
@@ -105,18 +105,18 @@ function check_array() {      //function for multifunctional calculator to check
         console.log(input_array);
     }
     //LFZ START
-    for (var i = 0; i < input_array.length; i++) {      //will go through the array (where everything stored) and will check if the array have an items '+' or '-'
-        console.log(" The length for +,-  is:", input_array.length);  //to see on my console that it is running
-        if (input_array[i] == "-") {     //condition to check if the item  "-" was found in the array
-            console.log("Found -,+ will run it");  //to see on my console that it found '-' in the array
-            do_math(input_array[i]);  // found the item, will run the function with the param that was found
-        } else if (input_array[i] == "+") {  // condition to check if the item "+" was found in the array
-            do_math(input_array[i]); // found the item, will run the function with the param that was found
-        }
-        console.log(input_array);
-    }
-    input_position = 0; //assign index position to 0
-    show_display(); // run the function to show everything on the display
+         //will go through the array (where everything stored) and will check if the array have an items '+' or '-'
+          //to see on my console that it is running
+           //condition to check if the item  "-" was found in the array
+             //to see on my console that it found '-' in the array
+             // found the item, will run the function with the param that was found
+         // condition to check if the item "+" was found in the array
+              // found the item, will run the function with the param that was found
+
+
+
+      //assign index position to 0
+    // run the function to show everything on the display
     //LFZ END
 }
 function do_math(a) {
@@ -197,26 +197,26 @@ function press_operator(oper) {                                        //when yo
     operator_text = $(oper).text();                             //assign the button to the right number
     console.log("you clicked operator ", operator_text);
     //LFZ START  //
-    if (!isNaN(parseFloat(input_array[input_position]))) {     // checks if the item before is a number
-        console.log("the one before is a number"); //to see on the console that the condition is true and running
-        console.log(input_array[input_position]);  // to see what is the number
-        input_position++;  //index position increased (shifted forward by 1) and assign the input_position by this number
-        input_array[input_position] = [""]; //to make a "space" (assign the position with an empty array and keep empty string inside (for undefined))
-        input_array[input_position] += operator_text;  // assign the space with the operator
-        input_position++;   // increase the index position by one and assign the input_position by that number
-        input_array[input_position] = "";                      //assign thespace to be empty and make make empty string (for undefined)
-        console.log(input_array);  //to see the array (result)
+       // checks if the item before is a number
+         //to see on the console that the condition is true and running
+          // to see what is the number
+        //index position increased (shifted forward by 1) and assign the input_position by this number
+         //to make a "space" (assign the position with an empty array and keep empty string inside (for undefined))
+          // assign the space with the operator
+         // increase the index position by one and assign the input_position by that number
+                              //assign thespace to be empty and make make empty string (for undefined)
+        //to see the array (result)
 
-    } else {                                                   //the item before is not a number (to prevent situation like this +++++---**** etc)
-        console.log("the one before is an operator");  //   // to see that the condition is  running( the condition when u press more than one operator
-        console.log("Array ", input_array);   //to see array
-        console.log("Position: ", input_position);  //to see the index position
-        input_position--;  //decrease index position and assign input_position to that number
-        input_array[input_position] = [""]; // make that "space" an empty array  with empty string inside ( to prevent undefined)
-        input_array[input_position] += operator_text; //assign the space with the oper you pressed
-        input_position++; //increase index position by 1 and assign it with the same value
-        console.log("value at index  : ", input_array[input_position]); //to see the result the operator
-        console.log("array  : ", input_array); //to see the array
+                                                    //the item before is not a number (to prevent situation like this +++++---**** etc)
+           //   // to see that the condition is  running( the condition when u press more than one operator
+           //to see array
+          //to see the index position
+         //decrease index position and assign input_position to that number
+          // make that "space" an empty array  with empty string inside ( to prevent undefined)
+          //assign the space with the oper you pressed
+          //increase index position by 1 and assign it with the same value
+          //to see the result the operator
+          //to see the array
     }
     //LFZ END
     $("#dispaly").text(input_array);
